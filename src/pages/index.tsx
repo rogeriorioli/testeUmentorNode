@@ -95,8 +95,10 @@ export default function Home() {
   };
 
   return (
-    <main className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Lista de Empregados</h1>
+    <main>
+          <div className="container mx-auto">
+
+      <h1 className="text-2xl font-bold mb-4">Tabela de Empregados</h1>
       
  
       {loading && <p>Carregando...</p>}
@@ -106,21 +108,28 @@ export default function Home() {
       {employers.length > 0 && (
         <table className="min-w-full border-collapse border border-gray-200">
           <thead>
-            <tr className="bg-gray-100">
-              <th className="border border-gray-200 px-4 py-2">Nome</th>
-              <th className="border border-gray-200 px-4 py-2">Email</th>
-              <th className="border border-gray-200 px-4 py-2">Situação</th>
-              <th className="border border-gray-200 px-4 py-2">Data de Admissão</th>
-            </tr>
+          <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                    <th className="py-3 px-6 text-left">ID</th>
+                    <th className="py-3 px-6 text-left">Nome</th>
+                    <th className="py-3 px-6 text-left">Email</th>
+                    <th className="py-3 px-6 text-left">Situação</th>
+                    <th className="py-3 px-6 text-left">Data de Admissão</th>
+                    <th className="py-3 px-6 text-left">Data e Hora (Cadastro)</th>
+                    <th className="py-3 px-6 text-left">Data e Hora (Atualização)</th>
+
+                </tr>
           </thead>
           <tbody>
             {employers.map((employer) => (
-              <tr key={employer.id} className="hover:bg-gray-50">
-                <td className="border border-gray-200 px-4 py-2">{employer.nome}</td>
-                <td className="border border-gray-200 px-4 py-2">{employer.email}</td>
-                <td className="border border-gray-200 px-4 py-2">{employer.situacao}</td>
-                <td className="border border-gray-200 px-4 py-2">{employer.data_admissao}</td>
-              </tr>
+            <tr className="bg-white border-b hover:bg-gray-100">
+              <td className="px-4 py-2">{employer.id}</td>
+              <td className="px-4 py-2">{employer.nome}</td>
+              <td className="px-4 py-2">{employer.email}</td>
+              <td className="px-4 py-2">{employer.situacao}</td>
+              <td className="px-4 py-2">{employer.data_admissao}</td>
+              <td className="px-4 py-2">{new Date(employer.created_at).toLocaleString()}</td>
+              <td className="px-4 py-2">{new Date(employer.updated_at).toLocaleString()}</td>
+        </tr>
             ))}
           </tbody>
         </table>
@@ -174,7 +183,7 @@ export default function Home() {
         </button>
       </form>
       </div>
-
+      </div>
     </main>
   );
 }
