@@ -179,7 +179,7 @@ export default function Home() {
           type="submit"
           className="mt-4 bg-green-500 text-white px-4 py-2 rounded"
           >
-          Adicionar Empregador
+          Adicionar Empregado
         </button>
       </form>
       </div>
